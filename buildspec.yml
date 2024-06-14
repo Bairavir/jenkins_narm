@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - apt-get update -y
+      - apt-get install -y wget unzip
+      - wget https://github.com/liquibase/liquibase/releases/download/v4.9.1/liquibase-4.9.1.zip
+      - unzip liquibase-4.9.1.zip -d /usr/local/liquibase
+      - export PATH=$PATH:/usr/local/liquibase
+
+  pre_build:
+    commands:
+      - echo "Pre-build stage"
+
+  build:
+    commands:
+      - echo "Build stage"
+      - liquibase --changeLogFile=db/changelog.xml update
+
+  post_build:
+    commands:
+      - echo "Post-build stage"
+
+artifacts:
+  files:
+    - '**/*'
