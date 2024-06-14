@@ -4,7 +4,7 @@ pipeline {
         DB_URL = 'jdbc:mysql://54.198.190.17:3306/naruto1'
         DB_USER = 'naruto1'
         DB_PASS = '12345678NARUto'
-        LIQUIBASE_HOME = '/usr/local/bin/liquibase'  // Update path if different
+        LIQUIBASE_HOME = '/usr/local/liquibase'  // Update path if different
     }
     stages {
         stage('Clone Repository') {
